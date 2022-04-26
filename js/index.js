@@ -1,7 +1,6 @@
-import resetControls from "./controls.js";
+import Controls from "./controls.js";
 
-//Named import
-import { Timer } from "./timer.js";
+import Timer from "./timer.js";
 
 const playButton = document.querySelector(".play");
 const pauseButton = document.querySelector(".pause");
@@ -16,43 +15,47 @@ let timerTimeOut;
 
 //Executar a factory
 // injeção de dependências
+const controls = Controls({
+  playButton,
+  pauseButton,
+  setButton,
+  stopButton,
+});
+
+//Executar a factory
+// injeção de dependências
 const timer = Timer({
   minutesDisplay,
   secondsDisplay,
   timerTimeOut,
-  resetControls,
+  resetControls: controls.reset,
 });
 
 //Eventos
 playButton.addEventListener("click", function () {
-  playButton.classList.add("hide");
-  pauseButton.classList.remove("hide");
-  setButton.classList.add("hide");
-  stopButton.classList.remove("hide");
+  controls.play();
   timer.countDown();
 });
 
 pauseButton.addEventListener("click", function () {
-  playButton.classList.remove("hide");
-  pauseButton.classList.add("hide");
-  setButton.classList.add("hide");
+  controls.pause();
   clearTimeout(timerTimeOut); //Parar o setTimeOut
 });
 
 setButton.addEventListener("click", function () {
-  let newMinutes = prompt("Quantos minutos?");
+  let newMinutes = controls.getMinutes();
   if (!newMinutes) {
-    timer.resetTimer();
+    timer.reset();
     return;
   }
 
   minutes = newMinutes;
-  updateTimerDisplay(minutes, 0);
+  timer.updateDisplay(minutes, 0);
 });
 
 stopButton.addEventListener("click", function () {
-  resetControls();
-  timer.resetTimer();
+  controls.reset();
+  timer.reset();
 });
 
 soundOnButton.addEventListener("click", function () {
