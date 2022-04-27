@@ -49,7 +49,7 @@ setButton.addEventListener("click", function () {
     return;
   }
 
-  minutes = newMinutes;
+  
   timer.updateDisplay(newMinutes, 0);
   timer.updateMinutes(newMinutes);
 });
