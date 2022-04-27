@@ -10,7 +10,8 @@ export default function () {
   );
 
   //tocando infinitamente
-  bgAudio.loop;
+  //propriedade loop = verdadeiro
+  bgAudio.loop = true;
 
   function pressButton() {
     buttonPressAudio.play();
