@@ -1,5 +1,8 @@
 //factory = uma função que organiza todas as informações necessárias para exportar, uma função que retorna um objeto
 
+//Import sound
+import Sounds from "./sounds.js";
+
 //Named export
 export default function Timer({
   minutesDisplay,
@@ -34,6 +37,9 @@ export default function Timer({
       if (isFinished) {
         resetControls();
         updateDisplay();
+
+        //Função retorna um objeto
+        Sounds().timeEnd();
         return;
       }
 
