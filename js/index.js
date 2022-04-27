@@ -10,7 +10,7 @@ const soundOnButton = document.querySelector(".soundOn");
 const soundOffButton = document.querySelector(".soundOff");
 const minutesDisplay = document.querySelector(".minutes");
 const secondsDisplay = document.querySelector(".seconds");
-let minutes = Number(minutesDisplay.textContent);
+
 let timerTimeOut;
 
 //Executar a factory
@@ -39,7 +39,7 @@ playButton.addEventListener("click", function () {
 
 pauseButton.addEventListener("click", function () {
   controls.pause();
-  clearTimeout(timerTimeOut); //Parar o setTimeOut
+  timer.hold();
 });
 
 setButton.addEventListener("click", function () {
@@ -50,7 +50,8 @@ setButton.addEventListener("click", function () {
   }
 
   minutes = newMinutes;
-  timer.updateDisplay(minutes, 0);
+  timer.updateDisplay(newMinutes, 0);
+  timer.updateMinutes(newMinutes);
 });
 
 stopButton.addEventListener("click", function () {

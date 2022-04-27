@@ -4,12 +4,15 @@
 export default function Timer({
   minutesDisplay,
   secondsDisplay,
-  timerTimeOut,
   resetControls,
 }) {
+  let minutes = Number(minutesDisplay.textContent);
+  let timerTimeOut;
+
   function updateDisplay(minutes, seconds) {
     minutesDisplay.textContent = String(minutes).padStart(2, "0");
     secondsDisplay.textContent = String(seconds).padStart(2, "0");
+    
   }
 
   function reset() {
@@ -40,10 +43,20 @@ export default function Timer({
     }, 1000);
   }
 
+  function updateMinutes(newMinutes) {
+    minutes = newMinutes;
+  }
+
+  function hold() {
+    clearTimeout(timerTimeOut); //Parar o setTimeOut
+  }
+
   //shorthand
   return {
     countDown,
     reset,
     updateDisplay,
+    updateMinutes,
+    hold,
   };
 }
