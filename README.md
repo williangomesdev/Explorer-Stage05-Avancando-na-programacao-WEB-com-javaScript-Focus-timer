@@ -28,7 +28,14 @@ Projeto simples de um cronometro, ajustado pela informação que o usuário forn
 
 [x] Botão de ligar e desligar som
 
+
+## Demonstração
+<p align="center">
+<img src="./assets/github/focusTimer.gif">
+</p>
+
 ## Tecnologias
+
 <img src="https://img.shields.io/badge/Css3-05122A?style=flat&logo=css3" alt="css3 Badge" height="25">&nbsp;
 <img src="https://img.shields.io/badge/Html5-05122A?style=flat&logo=html5" alt="html5 Badge" height="25">&nbsp;
 <img src="https://img.shields.io/badge/Javascript-05122A?style=flat&logo=javascript" alt="javascript Badge" height="25">&nbsp;
